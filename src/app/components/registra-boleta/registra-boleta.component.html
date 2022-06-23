@@ -1,0 +1,153 @@
+<app-menu></app-menu>
+<div class="container">
+
+
+  <h2 style="margin-top: 50px;">GENERAR BOLETA</h2>
+
+
+  <div class="block-body">
+    <form class="form-inline" (submit)="registraBoleta()">
+
+      <div class="form-group">
+        servicio
+        <select name="account" class="form-control mr-sm-3 " [(ngModel)]="DataBoleta.servicio!.id_servicio">
+          <option value="-1">[Seleccione]</option>
+          <option *ngFor="let aux of lstServicios" value="{{aux.id_servicio}}">{{aux.descripcion_servicio}} </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        departamento
+        <select name="account" class="form-control mr-sm-3 " [(ngModel)]="DataBoleta.departamento!.id_departamento">
+          <option value="-1">[Seleccione]</option>
+          <option *ngFor="let aux of lstDepa" value="{{aux.id_departamento}}">{{aux.numero_departamento}} </option>
+        </select>
+      </div>
+
+
+
+      <div >
+        Ultimo dia de pago
+      <input id="fecha_registro_boleta" type="text" [(ngModel)]="DataBoleta.ultimo_Dia_Pago"
+      name="fecha_registro_boleta" matInput [matDatepicker]="picker">
+      <mat-hint style="color:black ;">MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+
+      <!-- <div class="form-group">
+
+            <select name="account" class="form-control mr-sm-3" [(ngModel)]="registrovisita.departamento!.id_departamento">
+                <option value="-1">[Seleccione]</option>
+                <option   *ngFor="let aux of lstDepa"  value="{{aux.id_departamento}}" >{{aux.numero_departamento}}</option>
+              </select>
+          </div>   -->
+
+      <div class="form-group">
+
+        <input type="submit" value="Registrar Boleta" class=" btn btn-primary">
+      </div>
+
+    </form>
+  </div>
+
+  
+
+  <div class="table-responsive" style="padding-top: 50px;">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+
+          <th>ID Boleta </th>
+          <th>servicio</th>
+          <th>departamento</th>
+          <th>Ultimo Dia de Pago</th>
+          <th>fecha_pago_boleta</th>
+          <th>estado boleta</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aux of boletas">
+
+
+          <th>{{ aux.id_boleta }}</th>
+          <th>{{ aux.servicio?.descripcion_servicio }}</th>
+          <th>{{ aux.departamento?.numero_departamento }}</th>
+          <th>{{ aux.ultimo_Dia_Pago }}</th>
+          <th>{{ aux.fecha_pago_boleta }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">NO PAGO</th>
+          <th *ngIf=" aux.estado_boleta == 2 ">PAGO</th>
+
+
+
+
+
+
+
+        </tr>
+
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+  <h2 style="margin-top: 50px;">Filtrar Boletas</h2>
+  <div class="row" style="height: 80px">
+    <!-- Input para filtrar por Razon Social -->
+    <div class="col-md-4">
+      <input  class="form-control"  id="id_txt_filtro" name="filtro" placeholder="Filtrar por Departamento, servicio" type="text"/>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 80px"  ><i class="uil uil-search"></i></button>
+    </div>
+    
+  </div>
+
+  <div class="table-responsive" style="padding-top: 50px;">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+
+          <th>ID Boleta </th>
+          <th>servicio</th>
+          <th>departamento</th>
+          <th>Ultimo Dia de Pago</th>
+          <th>fecha pago boleta</th>
+          <th>estado boleta</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aux of boletas" >
+
+          
+          <th *ngIf=" aux.estado_boleta == 1 ">{{ aux.id_boleta }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">{{ aux.servicio?.descripcion_servicio }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">{{ aux.departamento?.numero_departamento }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">{{ aux.ultimo_Dia_Pago }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">{{ aux.fecha_pago_boleta }}</th>
+          <th *ngIf=" aux.estado_boleta == 1 ">NO PAGO</th>
+          
+          <td *ngIf=" aux.estado_boleta == 1 "><button  (click)="actualizaEstado(aux)"  type="button" style="width: 90px" class="btn btn-primary btn-sm" data-toggle='modal' data-target="#exampleModalEliminar">PAGAR BOLETA</button></td>
+       
+
+
+
+
+
+        </tr>
+
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

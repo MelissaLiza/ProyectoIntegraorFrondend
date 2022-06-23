@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+
+  <span class = "gap">Sistema Departamentos</span>
+  <button  class = "gap" mat-button  *ngIf="isLogged" (click)="onLogOut()">Cerrar Sesion</button>
+  <button  class = "gap" mat-button *ngIf="!isLogged" routerLink="/login">Iniciar Sesion</button>
+  <button  class = "gap" mat-button routerLink="crudMascotas" *ngIf="isLogged">Mascotas</button>
+  <button  class = "gap" mat-button routerLink="registraDepartamento" *ngIf="isLogged">Departamentos</button>
+
+  <button  class = "gap" mat-button routerLink="registraPropietario" *ngIf="isLogged" >Propietarios</button>
+  <button  class = "gap" mat-button routerLink="registraVisita" *ngIf="isLogged" >Visita</button>
+  <button  class = "gap" mat-button routerLink="crudServicios" *ngIf="isLogged" >Servicios</button>
+  <button  class = "gap" mat-button routerLink="registraBoleta" *ngIf="isLogged" >Generar Boleta</button>
+  <span class = "filler"></span>
+
+
+  <span *ngIf="isLogged">Bienvenido: {{nombreUsuario}}</span>
+
+
+
+</mat-toolbar>
