@@ -1,0 +1,9 @@
+.contenedor__registroProveedor{
+  padding: 40px 20px;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.36);
+  box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.36);
+}
+.uil{
+  font-size: 20px;
+}

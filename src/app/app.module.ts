@@ -25,7 +25,8 @@ import { AddDepartamentoComponent } from './components/add-departamento/add-depa
 import { RegistraBoletaComponent } from './components/registra-boleta/registra-boleta.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component'; 
+import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component';
+import { RegistraMascotaComponent } from './components/registra-mascota/registra-mascota.component'; 
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { RegistraIncidenteComponent } from './components/registra-incidente/regi
     AddDepartamentoComponent,
     RegistraBoletaComponent,
     RegistraIncidenteComponent,
+    RegistraMascotaComponent,
   ],
   imports: [
     BrowserModule,
