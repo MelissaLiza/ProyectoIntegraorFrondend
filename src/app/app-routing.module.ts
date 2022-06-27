@@ -9,6 +9,7 @@ import { RegistraBoletaComponent } from './components/registra-boleta/registra-b
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component';
+import { RegistraMascotaComponent } from './components/registra-mascota/registra-mascota.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:"registraPropietario", component:RegistraPropietarioComponent },
   {path:"registraBoleta", component:RegistraBoletaComponent },
   {path:"registraIncidente", component:RegistraIncidenteComponent },
+  {path:"registraMascota", component:RegistraMascotaComponent },
+
 
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },

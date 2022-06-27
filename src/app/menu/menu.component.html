@@ -5,17 +5,12 @@
   <button  class = "gap" mat-button *ngIf="!isLogged" routerLink="/login">Iniciar Sesion</button>
   <button  class = "gap" mat-button routerLink="crudMascotas" *ngIf="isLogged">Mascotas</button>
   <button  class = "gap" mat-button routerLink="registraDepartamento" *ngIf="isLogged">Departamentos</button>
-
   <button  class = "gap" mat-button routerLink="registraPropietario" *ngIf="isLogged" >Propietarios</button>
   <button  class = "gap" mat-button routerLink="registraVisita" *ngIf="isLogged" >Visita</button>
   <button  class = "gap" mat-button routerLink="crudServicios" *ngIf="isLogged" >Servicios</button>
   <button  class = "gap" mat-button routerLink="registraBoleta" *ngIf="isLogged" >Generar Boleta</button>
   <button  class = "gap" mat-button routerLink="registraIncidente" *ngIf="isLogged" >Incidente</button>
+  <button  class = "gap" mat-button routerLink="registraMascota" *ngIf="isLogged" >Mascota</button>
   <span class = "filler"></span>
-
-
-  <span *ngIf="isLogged">Bienvenido: {{nombreUsuario}}</span>
-
-
-
+  <span *ngIf="isLogged">{{nombreUsuario}}</span>
 </mat-toolbar>

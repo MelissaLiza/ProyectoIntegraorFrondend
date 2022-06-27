@@ -30,5 +30,4 @@ export class IncidenteService {
   servicioSolucionarIncidente(inc:Incidente):Observable<any>{
     return this.http.put(baseURL + "/solucionarIncidente", inc);
   }
-
 }
