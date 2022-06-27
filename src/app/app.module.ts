@@ -24,7 +24,8 @@ import { RegistraPropietarioComponent } from './components/registra-propietario/
 import { AddDepartamentoComponent } from './components/add-departamento/add-departamento.component';
 import { RegistraBoletaComponent } from './components/registra-boleta/registra-boleta.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component'; 
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     RegistraPropietarioComponent,
     AddDepartamentoComponent,
     RegistraBoletaComponent,
+    RegistraIncidenteComponent,
   ],
   imports: [
     BrowserModule,

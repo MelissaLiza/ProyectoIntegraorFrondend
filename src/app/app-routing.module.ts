@@ -7,13 +7,15 @@ import { IndexComponent } from './index/index.component';
 import { RegistraPropietarioComponent } from './components/registra-propietario/registra-propietario.component';
 import { RegistraBoletaComponent } from './components/registra-boleta/registra-boleta.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component';
 
 
 const routes: Routes = [
   {path:"registraVisita", component:RegistraVisitaComponent },
   {path:"registraPropietario", component:RegistraPropietarioComponent },
   {path:"registraBoleta", component:RegistraBoletaComponent },
+  {path:"registraIncidente", component:RegistraIncidenteComponent },
 
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },
