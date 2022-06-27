@@ -64,6 +64,7 @@ export class RegistraIncidenteComponent implements OnInit {
       (x)=> this.incidente = x
     )
   }
+
   listaIncidenteConFiltro2(){
     this.incidenteService.servicioListaIncidenteConFiltro2(this.filtro==""?"todos":this.filtro).subscribe(
       (x)=> this.incidente = x
