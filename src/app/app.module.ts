@@ -21,12 +21,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { RegistraPropietarioComponent } from './components/registra-propietario/registra-propietario.component';
-import { AddDepartamentoComponent } from './components/add-departamento/add-departamento.component';
+
 import { RegistraBoletaComponent } from './components/registra-boleta/registra-boleta.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { RegistraIncidenteComponent } from './components/registra-incidente/registra-incidente.component';
-import { RegistraMascotaComponent } from './components/registra-mascota/registra-mascota.component'; 
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { DepartamentosComponent } from './components/departamentos/departamentos.component'; 
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -37,10 +38,10 @@ import { RegistraMascotaComponent } from './components/registra-mascota/registra
     MenuComponent,
     IndexComponent,
     RegistraPropietarioComponent,
-    AddDepartamentoComponent,
+    
     RegistraBoletaComponent,
-    RegistraIncidenteComponent,
-    RegistraMascotaComponent,
+    ServiciosComponent,
+    DepartamentosComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ import { RegistraMascotaComponent } from './components/registra-mascota/registra
     MatNativeDateModule
 
   ],
-  providers: [
+  providers: [DatePipe
 
   ],
   bootstrap: [AppComponent]

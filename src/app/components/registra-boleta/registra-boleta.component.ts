@@ -8,7 +8,13 @@ import { Boleta } from 'src/app/models/boleta.model';
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import { PropietarioService } from 'src/app/services/propietario.service';
 import { MatDatepickerInput } from '@angular/material/datepicker'; 
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
+interface estadoboleta {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-registra-boleta',
@@ -17,13 +23,34 @@ import { MatDatepickerInput } from '@angular/material/datepicker';
 })
 export class RegistraBoletaComponent implements OnInit {
 
-  constructor(private servicioService: ServicioService,private boletaService: BoletaService,private departamentoService: DepartamentoService 
+  selectedYear!: number;
+  years: number[] = [];
+
+  fecha_pago_boleta: string= "";
+  id_departamento: number=0;
+  ultimo_Dia_Pago: string= "";
+  estado_boleta: number=0;
+  id_servicio: number=0;
+
+  foods: estadoboleta[] = [
+    {value: '2', viewValue: 'Pagado'},
+    {value: '1', viewValue: 'No pagado'},
+    
+  ];
+
+
+  
+
+  constructor(private datePipe: DatePipe,private servicioService: ServicioService,private boletaService: BoletaService,private departamentoService: DepartamentoService 
     ,private propietarioService: PropietarioService) { 
 
     this.servicioService.listaServicios().subscribe(visi => { this.lstServicios = visi })
     this.departamentoService.listarDepartamento().subscribe(depas => { this.lstDepa = depas })
     this.propietarioService.listaPropietario().subscribe(propie => { this.lstPropi = propie })
-
+    this.selectedYear = new Date().getFullYear();
+    for (let year = this.selectedYear; year >= 1990; year--) {
+    this.years.push(year);
+  }
 
   }
 
@@ -31,6 +58,7 @@ export class RegistraBoletaComponent implements OnInit {
   lstDepa: Departamento[] = [];
   lstPropi: Propietario[] = [];
   boletas: Boleta[]=[];
+ Cboletas: Boleta[]=[];
 
 DataBoleta : Boleta = {
   servicio: {
@@ -70,19 +98,9 @@ DataBoleta : Boleta = {
         )  
        }
 
-
-
-
-
        registraBoleta() {
         console.log(this.DataBoleta);
-        let fecha =  new Date();
-       let result = fecha.toLocaleString();
-       
-
-
-
-        this.DataBoleta.fecha_pago_boleta = "" + result;
+          
          this.boletaService.RegistraBoleta(this.DataBoleta).subscribe(
           (Response) => {
           console.log(Response.mensaje);
@@ -101,7 +119,6 @@ DataBoleta : Boleta = {
       
       }
 
-
       actualizaEstado(aux: Boleta) {
         console.log(" ==> En actualizaEstado() ");
     
@@ -109,8 +126,12 @@ DataBoleta : Boleta = {
         this.DataBoleta = aux;
         this.DataBoleta.estado_boleta = (aux.estado_boleta == 1) ? 2 : 1;
         let fecha =  new Date();
+        
+
         let result = fecha.toLocaleString();
-        this.DataBoleta.fecha_pago_boleta = ""+result;
+        var dateToDB = moment(result).format("YYYY-MM-DD");
+
+        this.DataBoleta.fecha_pago_boleta = ""+dateToDB;
     
         this.boletaService.actualiza(this.DataBoleta).subscribe(
           response => {
@@ -146,6 +167,60 @@ DataBoleta : Boleta = {
     
     
       }
+
+
+      consultaBoleta() {
+        
+        console.log(this.ultimo_Dia_Pago);
+
+        if (this.fecha_pago_boleta=="") 
+        
+{
+    
+  this.fecha_pago_boleta="";
+  
+} 
+else
+{
+  let fecha =  "";
+  fecha = this.fecha_pago_boleta;
+
+  let result = fecha.toLocaleString();
+  var dateToDB = moment(result).format("YYYY-MM-DD");
+  
+  this.fecha_pago_boleta = ""+dateToDB;
+}
+
+
+      if (this.ultimo_Dia_Pago=="") 
+        
+      {
+    
+  this.ultimo_Dia_Pago="";
+  
+        } 
+              else
+          {
+        let fecha2 =  "";
+  fecha2 = this.ultimo_Dia_Pago;
+
+  
+  var dateToDB2 = moment(fecha2).format("YYYY-MM-DD");
+  
+  this.ultimo_Dia_Pago = ""+dateToDB2;
+} 
+
+
+console.log(this.ultimo_Dia_Pago);
+        this.boletaService.consultaBoleta(this.fecha_pago_boleta, this.id_departamento, this.ultimo_Dia_Pago,this.estado_boleta,this.id_servicio).subscribe(
+          response => this.Cboletas = response.lista 
+           
+        );
+    
+      }
+
+
+
 
 
 

@@ -47,6 +47,8 @@ export class RegistraPropietarioComponent implements OnInit {
     };
   }
 
+  
+
   /*======= METODO PARA LLENAR FORMULARIO DE ACTUALIAR =======*/
   buscar(pro:Propietario){
     this.propietarioObj = pro;

@@ -11,7 +11,7 @@ export class PropietarioService {
 
   constructor(private http:HttpClient) { }
 
-  /*======= SERVICIO LISTAR PROPIETARIO =======*/
+/*======= SERVICIO REGISTRAR PROPIETARIO =======*/
   listaPropietario(): Observable<Propietario[]>{
     return this.http.get<Propietario[]>(baseURL)
   }
